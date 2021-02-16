@@ -1,3 +1,5 @@
+package com.company;
+
 public class Main {
 	public static void main(String[] args) {
 		Complex a = new Complex(5, 10, false); //a представлено в алгебраической форме
