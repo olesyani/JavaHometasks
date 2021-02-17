@@ -5,7 +5,8 @@ public class Complex
     /*
     класс содержит переменную trigonomentric_form, которая отвечает за форму, 
     в которой находится число в данный момент: false, если в алгебраической, true -
-    в тригонометрической
+    в тригонометрической, это позволяет совершать арифметические операции с
+    комплексными числами, находящимися в разных формах
     переменные a и b - в случае алгебраической формы два действительных числа, с помощью
     них комплексное число представляется как: a+b*i
     при тригонометрической форме: a(cosb + i*sinb)
@@ -16,6 +17,11 @@ public class Complex
         this.a = a; 
         this.b = b; 
         this.trigonomentric_form = trigonomentric_form;
+    }
+    public Complex() {
+        this.a = 0.0; 
+        this.b = 0.0; 
+        this.trigonomentric_form = false;
     }
     public Complex add(Complex arg) {
         if (this.trigonomentric_form == true) {
@@ -34,6 +40,14 @@ public class Complex
             arg.toStandard();
         }
         return new Complex(this.a - arg.a, this.b - arg.b, false);
+    }
+    public Complex multiply(double arg) {
+        if (this.trigonomentric_form == true) {
+            this.toStandard();
+        }
+        double result_a = this.a * arg;
+        double result_b = this.b * arg;
+        return new Complex(result_a, result_b, false);
     }
     public Complex multiply(Complex arg) {
         if (this.trigonomentric_form == true) {
@@ -84,11 +98,18 @@ public class Complex
             System.out.println(round_a + "(cos(" + round_b + ")+sin(" + round_b 
             + ")*i)");
         } else {
-            if (round_b > 0) {
+            if (round_b >= 0) {
                 System.out.println(round_a + "+" + round_b + "*i");
             } else {
                 System.out.println(round_a + "" + round_b + "*i");
             }
         }
     }
+    public double returnFirst() {
+        return this.a;
+    }
+    public double returnSecond() {
+        return this.b;
+    }
 }
+
