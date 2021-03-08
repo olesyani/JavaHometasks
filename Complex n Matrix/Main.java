@@ -36,9 +36,10 @@ public class Main {
 	        for (int i = 0; i < 2; i++) {
 	            System.out.println(i+1 + " row:");
 	            for (int j = 0; j < 2; j++) {
-	                a_matr.matrix[i][j] = new Complex(k, k, false);
-	                b_matr.matrix[i][j] = new Complex(k, k, false);
-	                a_matr.matrix[i][j].printComplex();
+	                a_matr.setElement(i, j, new Complex(k, k, false));
+	                b_matr.setElement(i, j, new Complex(k, k, false));
+	                Complex arg = a_matr.getElement(i, j);
+	                arg.printComplex();
 	                k = k + 1;
 	            }
 	        }
@@ -61,12 +62,12 @@ public class Main {
 	        Matrix new_matr = new Matrix(3, 3);
 	        for (int i = 0; i < 3; i++) {
 	            for (int j = 0; j < 3; j++) {
-	                new_matr.matrix[i][j] = new Complex(0, 0, false);
+	                new_matr.setElement(i, j, new Complex(0, 0, false));
 	            }
 	        }
-	        new_matr.matrix[0][0] = new Complex(1, 3, false);
-	        new_matr.matrix[1][1] = new Complex(4, 2, false);
-	        new_matr.matrix[2][2] = new Complex(1, 1, false);
+	        new_matr.setElement(0, 0, new Complex(1, 3, false));
+	        new_matr.setElement(1, 1, new Complex(4, 2, false));
+	        new_matr.setElement(2, 2, new Complex(1, 1, false));
 	        result = new_matr.determinate(new_matr.returnRows());
 	        result.printComplex();
 	}

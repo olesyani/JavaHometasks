@@ -2,8 +2,8 @@ package com.company;
 
 public class Matrix {
     private int rows, columns;
-    public Complex[][] matrix; //решила выбрать матрицу public, чтобы было проще в
-//программе менять ту или иную переменную
+    private Complex[][] matrix;
+    
     public Matrix() {
         this.rows = 0;
         this.columns = 0;
@@ -16,6 +16,18 @@ public class Matrix {
         this.rows = rows;
         this.columns = columns;
         this.matrix = new Complex[rows][columns];
+    }
+    public Complex getElement(int row_ind, int col_ind) {
+        if (row_ind > this.rows || col_ind > this.columns || row_ind < 0 || col_ind < 0) {
+            System.exit(-1);
+        }
+        return this.matrix[row_ind][col_ind];
+    }
+    public void setElement(int row_ind, int col_ind, Complex arg) {
+        if (row_ind > this.rows || col_ind > this.columns || row_ind < 0 || col_ind < 0) {
+            System.exit(-1);
+        }
+        this.matrix[row_ind][col_ind] = arg;
     }
     public Matrix add(Matrix arg) {
         if (this.rows != arg.returnRows() || this.columns != arg.returnColumns()) {
